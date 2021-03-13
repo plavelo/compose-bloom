@@ -122,7 +122,6 @@ fun LogIn(onTapLogin: () -> Unit = {}) {
             Button(
                 onClick = onTapLogin,
                 modifier = Modifier
-                    .padding(start = 16.dp, end = 16.dp)
                     .fillMaxWidth()
                     .height(48.dp),
                 colors = ButtonDefaults.buttonColors(
