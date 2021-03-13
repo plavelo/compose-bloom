@@ -23,6 +23,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
@@ -66,11 +67,12 @@ fun Welcome(onTapLogin: () -> Unit = {}) {
                     stringResource(R.string.subtitle),
                     style = MaterialTheme.typography.subtitle1,
                     color = MaterialTheme.colors.onPrimary,
+                    modifier = Modifier.paddingFromBaseline(top = 32.dp, bottom = 40.dp),
                 )
                 Button(
                     onClick = {},
                     modifier = Modifier
-                        .padding(top = 40.dp, start = 16.dp, end = 16.dp)
+                        .padding(start = 16.dp, end = 16.dp)
                         .fillMaxWidth()
                         .height(48.dp),
                     colors = ButtonDefaults.buttonColors(
