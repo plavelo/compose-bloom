@@ -93,7 +93,8 @@ fun Welcome(onTapLogin: () -> Unit = {}) {
                         .height(48.dp),
                 ) {
                     Text(
-                        stringResource(R.string.login), style = MaterialTheme.typography.button,
+                        stringResource(R.string.login),
+                        style = MaterialTheme.typography.button,
                         color = MaterialTheme.colors.secondary,
                     )
                 }

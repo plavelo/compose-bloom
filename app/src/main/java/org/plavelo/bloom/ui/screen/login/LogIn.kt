@@ -15,10 +15,143 @@
  */
 package org.plavelo.bloom.ui.screen.login
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.paddingFromBaseline
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import org.plavelo.bloom.R
+import org.plavelo.bloom.ui.theme.MyTheme
 
 @Composable
 fun LogIn() {
-    Text("Hello!")
+    Surface(
+        color = MaterialTheme.colors.background,
+        modifier = Modifier.padding(horizontal = 16.dp),
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight(),
+        ) {
+            Text(
+                stringResource(R.string.login_title),
+                style = MaterialTheme.typography.h1,
+                color = MaterialTheme.colors.onPrimary,
+                modifier = Modifier.paddingFromBaseline(top = 184.dp, bottom = 16.dp),
+            )
+            OutlinedTextField(
+                "",
+                onValueChange = {},
+                placeholder = {
+                    Text(
+                        stringResource(R.string.email_placeholder),
+                        style = MaterialTheme.typography.body1,
+                        color = MaterialTheme.colors.onPrimary,
+                    )
+                },
+                modifier = Modifier.fillMaxWidth(),
+            )
+            OutlinedTextField(
+                "",
+                onValueChange = {},
+                placeholder = {
+                    Text(
+                        stringResource(R.string.password_placeholder),
+                        style = MaterialTheme.typography.body1,
+                        color = MaterialTheme.colors.onPrimary,
+                    )
+                },
+                modifier = Modifier
+                    .padding(top = 8.dp)
+                    .fillMaxWidth(),
+            )
+            Text(
+                with(AnnotatedString.Builder()) {
+                    append(stringResource(R.string.login_description1))
+                    append(" ")
+
+                    pushStyle(
+                        SpanStyle(
+                            textDecoration = TextDecoration.Underline,
+                        )
+                    )
+                    append(stringResource(R.string.terms_of_use))
+                    pop()
+
+                    append(" ")
+                    append(stringResource(R.string.login_description2))
+                    append(" ")
+
+                    pushStyle(
+                        SpanStyle(
+                            textDecoration = TextDecoration.Underline,
+                        )
+                    )
+                    append(stringResource(R.string.privacy_policy))
+                    pop()
+
+                    append(" ")
+                    append(stringResource(R.string.login_description3))
+
+                    toAnnotatedString()
+                },
+                style = MaterialTheme.typography.body2,
+                color = MaterialTheme.colors.onPrimary,
+                modifier = Modifier.paddingFromBaseline(top = 24.dp, bottom = 16.dp),
+                textAlign = TextAlign.Center,
+            )
+            Button(
+                onClick = {},
+                modifier = Modifier
+                    .padding(start = 16.dp, end = 16.dp)
+                    .fillMaxWidth()
+                    .height(48.dp),
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = MaterialTheme.colors.secondary
+                ),
+                shape = MaterialTheme.shapes.medium,
+            ) {
+                Text(
+                    stringResource(R.string.login),
+                    style = MaterialTheme.typography.button,
+                    color = MaterialTheme.colors.onSecondary,
+                )
+            }
+        }
+    }
+}
+
+@Preview("Light Theme", widthDp = 360, heightDp = 640)
+@Composable
+fun WelcomePreview() {
+    MyTheme {
+        LogIn()
+    }
+}
+
+@Preview("Dark Theme", widthDp = 360, heightDp = 640)
+@Composable
+fun DarkPreview() {
+    MyTheme(darkTheme = true) {
+        LogIn()
+    }
 }
