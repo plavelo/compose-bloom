@@ -15,8 +15,11 @@
  */
 package org.plavelo.bloom.ui
 
+import android.view.Window
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.graphics.toArgb
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -33,7 +36,7 @@ object MainDestinations {
 }
 
 @Composable
-fun NavGraph(startDestination: String = MainDestinations.WELCOME_ROUTE) {
+fun NavGraph(window: Window, startDestination: String = MainDestinations.WELCOME_ROUTE) {
     val navController = rememberNavController()
     val actions = remember(navController) { MainActions(navController) }
     NavHost(
@@ -41,16 +44,19 @@ fun NavGraph(startDestination: String = MainDestinations.WELCOME_ROUTE) {
         startDestination = startDestination
     ) {
         composable(MainDestinations.WELCOME_ROUTE) {
+            window.statusBarColor = MaterialTheme.colors.primary.toArgb()
             Welcome(
                 onTapLogin = actions.login,
             )
         }
         composable(MainDestinations.LOGIN_ROUTE) {
+            window.statusBarColor = MaterialTheme.colors.background.toArgb()
             LogIn(
                 onTapLogin = actions.home,
             )
         }
         composable(MainDestinations.HOME_ROUTE) {
+            window.statusBarColor = MaterialTheme.colors.background.toArgb()
             Home()
         }
     }

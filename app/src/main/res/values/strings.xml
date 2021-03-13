@@ -21,4 +21,5 @@
     <string name="login_description3">.</string>
     <string name="terms_of_use">Terms of Use</string>
     <string name="privacy_policy">Privacy Policy</string>
+    <string name="search_placeholder">Search</string>
 </resources>

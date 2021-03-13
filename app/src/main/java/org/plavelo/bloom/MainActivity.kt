@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyTheme(darkTheme = isSystemInDarkTheme()) {
-                NavGraph()
+                NavGraph(window)
             }
         }
     }
