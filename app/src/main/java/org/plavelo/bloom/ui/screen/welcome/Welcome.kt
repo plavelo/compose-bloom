@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.plavelo.bloom.ui.welcome
+package org.plavelo.bloom.ui.screen.welcome
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box

@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.plavelo.bloom.ui.home
+package org.plavelo.bloom.ui.screen.login
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 
 @Composable
-fun Home() {
+fun LogIn() {
     Text("Hello!")
 }

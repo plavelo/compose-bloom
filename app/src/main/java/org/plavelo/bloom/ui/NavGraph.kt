@@ -22,9 +22,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
-import org.plavelo.bloom.ui.home.Home
-import org.plavelo.bloom.ui.login.LogIn
-import org.plavelo.bloom.ui.welcome.Welcome
+import org.plavelo.bloom.ui.screen.home.Home
+import org.plavelo.bloom.ui.screen.login.LogIn
+import org.plavelo.bloom.ui.screen.welcome.Welcome
 
 object MainDestinations {
     const val WELCOME_ROUTE = "welcome"
