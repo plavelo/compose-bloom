@@ -16,6 +16,7 @@
 package org.plavelo.bloom.ui
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -34,12 +35,15 @@ object MainDestinations {
 @Composable
 fun NavGraph(startDestination: String = MainDestinations.WELCOME_ROUTE) {
     val navController = rememberNavController()
+    val actions = remember(navController) { MainActions(navController) }
     NavHost(
         navController = navController,
         startDestination = startDestination
     ) {
         composable(MainDestinations.WELCOME_ROUTE) {
-            Welcome()
+            Welcome(
+                onTapLogin = actions.login,
+            )
         }
         composable(MainDestinations.LOGIN_ROUTE) {
             LogIn()

@@ -40,7 +40,7 @@ import org.plavelo.bloom.R
 import org.plavelo.bloom.ui.theme.MyTheme
 
 @Composable
-fun Welcome() {
+fun Welcome(onTapLogin: () -> Unit = {}) {
     Surface(color = MaterialTheme.colors.primary) {
         Box {
             Image(
@@ -85,7 +85,7 @@ fun Welcome() {
                     )
                 }
                 TextButton(
-                    onClick = {},
+                    onClick = onTapLogin,
                     modifier = Modifier
                         .padding(top = 8.dp)
                         .height(48.dp),
