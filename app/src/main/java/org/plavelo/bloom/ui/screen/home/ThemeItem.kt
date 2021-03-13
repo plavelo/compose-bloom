@@ -43,7 +43,7 @@ fun ThemeItem(text: String, @DrawableRes image: Int) {
         elevation = Elevations.elevation01,
         modifier = Modifier.size(136.dp),
     ) {
-        Surface(color = MaterialTheme.colors.background) {
+        Surface(color = MaterialTheme.colors.surface) {
             Column {
                 Image(
                     painterResource(image),
