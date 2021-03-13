@@ -61,7 +61,7 @@ val typography = Typography(
         fontFamily = nunitoSansFamily,
         fontWeight = FontWeight.SemiBold,
         fontSize = 14.sp,
-        letterSpacing = 1.em,
+        letterSpacing = 0.1.em,
     ),
     caption = TextStyle(
         fontFamily = nunitoSansFamily,
