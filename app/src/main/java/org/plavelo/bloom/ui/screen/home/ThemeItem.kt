@@ -41,7 +41,9 @@ fun ThemeItem(text: String, @DrawableRes image: Int) {
     Card(
         shape = MaterialTheme.shapes.small,
         elevation = Elevations.elevation01,
-        modifier = Modifier.size(136.dp),
+        modifier = Modifier
+            .size(138.dp)
+            .padding(2.dp),
     ) {
         Surface(color = MaterialTheme.colors.surface) {
             Column {

@@ -44,13 +44,13 @@ import org.plavelo.bloom.ui.theme.MyTheme
 fun LogIn(onTapLogin: () -> Unit = {}) {
     Surface(
         color = MaterialTheme.colors.background,
-        modifier = Modifier.padding(horizontal = 16.dp),
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxWidth()
-                .fillMaxHeight(),
+                .fillMaxHeight()
+                .padding(horizontal = 16.dp),
         ) {
             Text(
                 stringResource(R.string.login_title),

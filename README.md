@@ -19,6 +19,8 @@ Be the fastest to implement a set of designs provided by us. The designs will be
 ## :camera_flash: Screenshots
 <!-- You can add more screenshots here if you like -->
 <img src="/results/screenshot_1.png" width="260">&emsp;<img src="/results/screenshot_2.png" width="260">&emsp;<img src="/results/screenshot_3.png" width="260">
+<br>
+<img src="/results/screenshot_dark1.png" width="260">&emsp;<img src="/results/screenshot_dark2.png" width="260">&emsp;<img src="/results/screenshot_dark3.png" width="260">
 
 ## License
 ```
