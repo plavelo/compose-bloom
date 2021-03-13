@@ -52,7 +52,7 @@ fun Welcome(onTapLogin: () -> Unit = {}) {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier.fillMaxHeight(),
             ) {
-                Row(modifier = Modifier.padding(top = 72.dp, start = 88.dp)) {
+                Row(modifier = Modifier.padding(top = 48.dp, start = 88.dp)) {
                     Image(
                         painterResource(R.drawable.ic_welcome_illos),
                         contentDescription = null,

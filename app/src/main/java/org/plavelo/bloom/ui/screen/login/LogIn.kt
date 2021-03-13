@@ -56,7 +56,7 @@ fun LogIn(onTapLogin: () -> Unit = {}) {
                 stringResource(R.string.login_title),
                 style = MaterialTheme.typography.h1,
                 color = MaterialTheme.colors.onPrimary,
-                modifier = Modifier.paddingFromBaseline(top = 184.dp, bottom = 16.dp),
+                modifier = Modifier.paddingFromBaseline(top = 160.dp, bottom = 16.dp),
             )
             OutlinedTextField(
                 "",
