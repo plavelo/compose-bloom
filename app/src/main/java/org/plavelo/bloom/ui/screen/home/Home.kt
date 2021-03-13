@@ -15,12 +15,21 @@
  */
 package org.plavelo.bloom.ui.screen.home
 
+import androidx.annotation.DrawableRes
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
@@ -31,10 +40,11 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.filled.FilterList
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
@@ -51,11 +61,42 @@ sealed class NavItem(val title: String, val icon: ImageVector) {
     object Cart : NavItem("Cart", Icons.Filled.ShoppingCart)
 }
 
-val items = listOf(
+val navItems = listOf(
     NavItem.Home,
     NavItem.Favorites,
     NavItem.Profile,
     NavItem.Cart,
+)
+
+sealed class GardenItem(val title: String, val description: String, @DrawableRes val image: Int) {
+    object Aglaonema : GardenItem("Aglaonema", "This is a description", R.drawable.aglaonema)
+    object DesertChic : GardenItem("Desert chic", "This is a description", R.drawable.desert_chic)
+    object EasyCare : GardenItem("Easy care", "This is a description", R.drawable.easy_care)
+    object FiddleLeaf : GardenItem("Fiddle leaf", "This is a description", R.drawable.fiddle_leaf)
+    object JungleVibes :
+        GardenItem("Jungle vibes", "This is a description", R.drawable.jungle_vibes)
+
+    object Monstera : GardenItem("Monstera", "This is a description", R.drawable.monstera)
+    object PeaceLily : GardenItem("Peace lily", "This is a description", R.drawable.peace_lily)
+    object Photos : GardenItem("Photos", "This is a description", R.drawable.photos)
+    object SnakePlant : GardenItem("Snake plant", "This is a description", R.drawable.snake_plant)
+    object Statements : GardenItem("Statements", "This is a description", R.drawable.statements)
+    object TinyTerrariums :
+        GardenItem("Tiny terrariums", "This is a description", R.drawable.tiny_terrariums)
+}
+
+val gardenItems = listOf(
+    GardenItem.Aglaonema,
+    GardenItem.DesertChic,
+    GardenItem.EasyCare,
+    GardenItem.FiddleLeaf,
+    GardenItem.JungleVibes,
+    GardenItem.Monstera,
+    GardenItem.PeaceLily,
+    GardenItem.Photos,
+    GardenItem.SnakePlant,
+    GardenItem.Statements,
+    GardenItem.TinyTerrariums,
 )
 
 @Composable
@@ -66,7 +107,7 @@ fun Home() {
                 elevation = Elevations.elevation16,
                 modifier = Modifier.height(56.dp),
             ) {
-                items.forEach { item ->
+                navItems.forEach { item ->
                     BottomNavigationItem(
                         icon = {
                             Icon(
@@ -90,7 +131,6 @@ fun Home() {
         }
     ) {
         Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxWidth()
                 .fillMaxHeight()
@@ -99,6 +139,13 @@ fun Home() {
             OutlinedTextField(
                 "",
                 onValueChange = {},
+                leadingIcon = {
+                    Icon(
+                        Icons.Filled.Search,
+                        contentDescription = null,
+                        modifier = Modifier.size(18.dp),
+                    )
+                },
                 placeholder = {
                     Text(
                         stringResource(R.string.search_placeholder),
@@ -106,9 +153,54 @@ fun Home() {
                         color = MaterialTheme.colors.onPrimary,
                     )
                 },
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 40.dp),
             )
+
+            Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+                Text(
+                    stringResource(R.string.home_browse),
+                    style = MaterialTheme.typography.h1,
+                    color = MaterialTheme.colors.onPrimary,
+                    modifier = Modifier.paddingFromBaseline(top = 32.dp),
+                )
+
+                LazyRow(modifier = Modifier.padding(top = 16.dp)) {
+                    items(gardenItems) { item ->
+                        ThemeItem(item.title, item.image)
+                        Spacer(modifier = Modifier.size(8.dp))
+                    }
+                }
+
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 16.dp),
+                ) {
+                    Text(
+                        stringResource(R.string.home_design),
+                        style = MaterialTheme.typography.h1,
+                        color = MaterialTheme.colors.onPrimary,
+                        modifier = Modifier.paddingFromBaseline(top = 40.dp),
+                    )
+                    Icon(
+                        Icons.Filled.FilterList,
+                        contentDescription = null,
+                        modifier = Modifier
+                            .padding(top = 16.dp)
+                            .size(24.dp),
+                    )
+                }
+                for (item in gardenItems) {
+                    DesignItem(item.title, item.description, item.image)
+                    Spacer(modifier = Modifier.size(8.dp))
+                }
+            }
         }
+
+        Spacer(modifier = Modifier.height(56.dp))
     }
 }
 
@@ -122,7 +214,7 @@ fun HomePreview() {
 
 @Preview("Dark Theme", widthDp = 360, heightDp = 640)
 @Composable
-fun DarkPreview() {
+fun HomeDarkPreview() {
     MyTheme(darkTheme = true) {
         Home()
     }
