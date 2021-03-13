@@ -41,7 +41,7 @@ import org.plavelo.bloom.R
 import org.plavelo.bloom.ui.theme.MyTheme
 
 @Composable
-fun LogIn() {
+fun LogIn(onTapLogin: () -> Unit = {}) {
     Surface(
         color = MaterialTheme.colors.background,
         modifier = Modifier.padding(horizontal = 16.dp),
@@ -120,7 +120,7 @@ fun LogIn() {
                 textAlign = TextAlign.Center,
             )
             Button(
-                onClick = {},
+                onClick = onTapLogin,
                 modifier = Modifier
                     .padding(start = 16.dp, end = 16.dp)
                     .fillMaxWidth()
